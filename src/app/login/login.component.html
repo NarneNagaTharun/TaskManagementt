@@ -1,0 +1,37 @@
+<div class="app-login-form">
+  <h2>{{ isLoginMode ? "Login Here" : "Signup Here" }}</h2>
+  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+    <div class="form-input">
+      <label>Email Address</label>
+      <input
+        type="email"
+        placeholder="Email address"
+        name="email"
+        ngModel
+        required
+        email
+      />
+    </div>
+    <div class="form-input">
+      <label>Password</label>
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        ngModel
+        required
+      />
+    </div>
+    <button type="submit" class="app-login-btn">
+      {{ isLoginMode ? "Login" : "Signup" }}
+    </button>
+    <p>
+      {{
+        isLoginMode ? "Do not have an accout yet?" : "Already have an account?"
+      }}
+      <button class="app-toggle-btn" type="button" (click)="onSwitchMode()">
+        {{ isLoginMode ? "Register Here." : "Login Here." }}
+      </button>
+    </p>
+  </form>
+</div>
