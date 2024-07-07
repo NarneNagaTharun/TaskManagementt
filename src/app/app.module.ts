@@ -15,6 +15,7 @@ import { RouteModule } from './route.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LoaderComponent } from './utility/loader/loader.component';
+import { SnackbarComponent } from './utility/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoaderComponent } from './utility/loader/loader.component';
     TaskDetailsComponent,
     HomeComponent,
     LoginComponent,
-    LoaderComponent
+    LoaderComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,

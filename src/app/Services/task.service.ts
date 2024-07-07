@@ -16,7 +16,7 @@ export class TaskService{
     CreateTask(task: Task){
         const headers = new HttpHeaders({'my-header': 'hello-world'})
         this.http.post<{name: string}>(
-            'https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json', 
+            'https://http-c1fd1-default-rtdb.firebaseio.com/tasks.json', 
             task, {headers: headers}
             )
             .pipe(catchError((err) => {
@@ -31,7 +31,7 @@ export class TaskService{
     }
 
     DeleteTask(id: string | undefined){
-        this.http.delete('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/' +id+'.json')
+        this.http.delete('https://http-c1fd1-default-rtdb.firebaseio.com/tasks/' +id+'.json')
         .pipe(catchError((err) => {
             //Write the logic to log errors
             const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
@@ -44,7 +44,7 @@ export class TaskService{
     }
 
     DeleteAllTasks(){
-        this.http.delete('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json', {observe: 'events', responseType: 'json'})
+        this.http.delete('https://http-c1fd1-default-rtdb.firebaseio.com/tasks.json', {observe: 'events', responseType: 'json'})
         .pipe(tap((event) => {
             console.log(event);
             if(event.type === HttpEventType.Sent){
@@ -71,7 +71,7 @@ export class TaskService{
         queryParams = queryParams.set('item', 10)
 
         return this.http.get<{[key: string]: Task}>(
-            'https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks.json'
+            'https://http-c1fd1-default-rtdb.firebaseio.com/tasks.json'
             ,{headers: headers, params: queryParams, observe: 'body'}
             ).pipe(map((response) => {
                  //TRANSFORM DATA
@@ -93,7 +93,7 @@ export class TaskService{
     }
 
     UpdateTask(id: string | undefined, data: Task){
-        this.http.put('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/'+id+'.json', data)
+        this.http.put('https://http-c1fd1-default-rtdb.firebaseio.com/tasks/'+id+'.json', data)
         .pipe(catchError((err) => {
             //Write the logic to log errors
             const errorObj = {statusCode: err.status, errorMessage: err.message, datetime: new Date()}
@@ -106,7 +106,7 @@ export class TaskService{
     }
 
     getTaskDetails(id: string | undefined){
-        return this.http.get('https://angularhttpclient-f1d30-default-rtdb.firebaseio.com/tasks/'+id+'.json')
+        return this.http.get('https://http-c1fd1-default-rtdb.firebaseio.com/tasks/'+id+'.json')
         .pipe(map((response) => {
             console.log(response)
             let task = {};
